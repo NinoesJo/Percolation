@@ -67,7 +67,7 @@ You'll create three new implementations of the `IPercolate` interface that you'l
 
 For all three classes, test the implementation using the JUnit test class `TestPercolate` by changing which of the three implementations is used. You **must also test using the `InteractivePercolationVisualizer` simulating the percolation using your own click-tests.**  Do not depend only on the JUnit tests.
 
-For the analysis you will run `PercolationStats` and answer the analysis questions. 
+For the analysis you will run `PercolationStats`. 
 
 
 ## Part 1 `PercolationDFS`
