@@ -5,15 +5,11 @@ This is the directions document for Project 5 Percolation in CompSci 201 at Duke
 
 **See [the details document](docs/details.md) for information** on using Git, starting the project, and more details about the project including information about the classes and concepts that are outlined briefly below. You'll absolutely need to read the information in the [details document](docs/details.md) to understand how the classes in this project work independently and together. The _details_ document also contains project-specific details. This current document provides a high-level overview of the assignment.
 
-**You are STRONGLY encouraged to work with a partner on P5!** (and on P6 and P7). See [the details document](docs/details.md) for information on using Git with a partner and how the workflow can proceed. If you'd like to be paired (somewhat randomly, but you can write about yourself or a partner) then fill [out this form to request a pairing](https://forms.office.com/r/nv58WSSsUh).
-
 ## Outline 
 - [Project Introduction](#project-introduction)
 - [Part 1: `PercolationDFS`](#part-1-percolationdfsfast)
 - [Part 2: `PercolationBFS`](#part-2-percolationbfs)
 - [Part 3: `PercolationUF`](#part-3-percolationuf)
-- [Benchmarking and Analysis](#benchmarking-and-analysis)
-- [Submitting, Reflect, and Grading](#submitting-reflect-and-grading)
 
 
 ## Project Introduction
@@ -94,64 +90,3 @@ This class `implements` the `IPercolate` interface and will use an `IUnionFind` 
 
 See [the details document](docs/details.md) for details.
 
-
-## Benchmarking and Analysis
-
-Copy/Paste the runs described below and answer the questions that are included below. You will answer these questions in a separate PDF document you submit to gradescope.
-
-You're given `PercolationStats.java` which performs benchmarks for an `IPercolate` object using grid sizes of 100, 200, 400, 800, 1600, and 3200. If you don't change the value of the public `RANDOM_SEED` variable you should _**see the same mean values**_ of the Percolation threshold shown below. Your timing values may vary, but for all implementations using 10 trials you should see the same mean and standard deviation values. A sample run is provided below from running `PercolationDFSFast` on ola's laptop computer. **You will eventually reach a StackOverflowError because you’re running an infinite benchmark on a computer with finite memory. This is normal!**
-
-<details>
-<summary>Expand for example simulation data</summary>
-
-```
-simulation data for 10 trials
-grid	mean	stddev	total time
-100	0.593	0.019	0.026
-200	0.596	0.006	0.033
-400	0.592	0.006	0.174
-800	0.592	0.003	1.475
-
-Exception in thread "main" java.lang.StackOverflowError
-    at PercolationDFS.dfs(PercolationDFS.java:109)
-    at PercolationDFS.dfs(PercolationDFS.java:109)
-    at PercolationDFS.dfs(PercolationDFS.java:109)
-    at PercolationDFS.dfs(PercolationDFS.java:110)
-    at PercolationDFS.dfs(PercolationDFS.java:109)
-    [... rest truncated]
-```
-</details>
-
-Copy/paste the results for running `PercolationStats.java` for 10 trials on each `IPercolate` object (`PercolationDFS, PercolationBFS, PercolationUF`) in your analysis document. 
-
-So first copy/paste data for the grid sizes shown above for all three `IPercolate` classes you implement for this project. Then answer these questions using data from `PercolationUF` with `QuickUWPC`.
-1. How does doubling the grid size affect running time (keeping # trials fixed)? Specifically, by roughly what factor does the runtime increase each time we double the grid size?
-2. How does doubling the number of trials, e.g., to 20 (and more) affect running time? Specifically, by roughly what factor does the runtime increase each time we double the number of trials?
-3. Based on your observations of the timings with 10 trials, estimate the largest grid size you can run completely within at most 24 hours with 10 trials. Explain your reasoning.
-4. Read this brief opinion article: [Cho and Cain, _Human-centered redistricting automation in the age of AI+, Science, September 2020](https://courses.cs.duke.edu/compsci201/fall21/netid/science-abd1879.pdf) about using statistical and computational techiques similar to those used in this assignment for socio-technical problems such as congressional districting. Write a paragraph about your thoughts after reading the article regarding the relationship between computational techniques and societal applications.
-
-**After completing the analysis questions you should submit your answers as a PDF to the P6-analysis project on Gradescope.**
-
-## Submitting, Reflect, and Grading
-
-Push your code to Git. Do this often. Once you have run and tested your completed program locally:
-
-1. Submit your code on gradescope to the autograder.
-2. Submit a PDF to Gradescope in the separate Analysis assignment. Be sure to mark pages for the questions as explained in the [gradescope documentation here](https://help.gradescope.com/article/ccbpppziu9-student-submit-work#submitting_a_pdf).
-
-
-For this project, the grading will be:
-
-| Points | Grading Criteria |
-| --- | --- |
-| 6 | PercolationDFS |
-| 6 | PercolationBFS |
-| 6 | PercolationUF |
-| 8 | Analysis  |
-
-# Autograder API Checker
-We use an API checker to check that you implement the appropriate instance variables and methods for each method. Attached below is a sample output response from a head UTA’s test submission. 
-
-![Sample API Checker from Head UTA's Computer](./p6-figures/P6-API.png)
-
-In order to resolve this issue, make sure that if you’ve added any instance variables or helper methods not specified in the writeup that you change them to private. 
